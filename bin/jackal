@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+$:.unshift(File.dirname(__FILE__) + '/../lib') unless $:.include?(File.dirname(__FILE__) + '/../lib')
+
+require 'octokit'
+require 'jackal'
+
+
+configuration = Configuration.new
+
+client = Octokit::Client.new(access_token: configuration.access_token)
+
+
+def format(text, indent)
+  (" " * indent) + text
+end
+
+def print_pull_requests(pull_requests)
+  indent = 2
+  pull_requests.each do |pr|
+    puts format("#{pr[:user][:login]}:  #{pr[:title]} on #{pr[:updated_at]}", indent)
+    puts format(pr[:url], pr[:user][:login].size + indent + 3)
+  end
+  puts ""
+end
+
+def get_pull_requests(client, repo)
+  client.pull_requests(repo)
+rescue Octokit::NotFound
+  puts "The repository #{repo} could not be found."
+  []
+end
+
+puts "Checking your PRs"
+
+configuration.repos.each do |repo|
+  pull_requests = get_pull_requests(client, repo)
+  if !pull_requests.empty?
+    puts "On #{repo}:"
+    print_pull_requests(pull_requests)
+  end
+end
+
+
+

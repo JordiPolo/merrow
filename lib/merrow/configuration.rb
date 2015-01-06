@@ -1,9 +1,9 @@
-#This class manages the configuration in the .jackal.yml file
+#This class manages the configuration in the .merrow.yml file
 require 'yaml'
 require 'octokit'
 
 class Configuration
-  FILENAME= '.jackal.yml'
+  FILENAME= '.merrow.yml'
 
   def access_token
     if !data['access_token']

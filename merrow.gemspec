@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'jackal/version'
+require 'merrow/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "jackal"
+  spec.name          = "merrow"
   spec.version       = Jackal::VERSION
   spec.authors       = ["Jordi Polo"]
   spec.email         = ["mumismo@gmail.com"]

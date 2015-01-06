@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Jackal::VERSION
   spec.authors       = ["Jordi Polo"]
   spec.email         = ["mumismo@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Small tool to look at all you pending PR in Github.}
+  spec.description   = %q{Small tool to look at all you pending PR in Github }
   spec.homepage      = ""
   spec.license       = "MIT"
 

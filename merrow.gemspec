@@ -5,7 +5,7 @@ require 'merrow/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "merrow"
-  spec.version       = Jackal::VERSION
+  spec.version       = Merrow::VERSION
   spec.authors       = ["Jordi Polo"]
   spec.email         = ["mumismo@gmail.com"]
   spec.summary       = %q{Small tool to look at all you pending PR in Github.}
@@ -20,6 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'byebug', '~> 3.0'
   spec.add_dependency "octokit", "~> 3.0"
 end

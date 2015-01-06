@@ -1,3 +1,3 @@
-module Jackal
-  VERSION = "0.0.1"
+module Merrow
+  VERSION = "0.0.2"
 end

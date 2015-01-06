@@ -1,4 +1,4 @@
-# Jackal
+# Merrow
 
 A simple tool to list all the PRs available in certain repositories.
 Saves you time when you are working on/has to be aware of several projects at the same time.
@@ -13,7 +13,7 @@ Install it yourself as:
 
 ## Configuration
 
-Jackal reads a list of repositories and an access tocken from the ~/.merrow.yml file.
+Merrow reads a list of repositories and an access tocken from the ~/.merrow.yml file.
 The file looks like this:
 
 ---
@@ -24,7 +24,7 @@ repos:
 access_token: mylongaccesstokenwouldbewrittendowninhere
 
 
-Add as many repos as you want, if you do not know how to make an access token, do not worry about that. Only add your repos, Jackal will generate one and write it down in the config file for you the first time it is executed
+Add as many repos as you want, if you do not know how to make an access token, do not worry about that. Only add your repos, Merrow will generate one and write it down in the config file for you the first time it is executed
 
 ## Usage
 

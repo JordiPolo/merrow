@@ -14,11 +14,24 @@ def format(text, indent)
   (" " * indent) + text
 end
 
+def days_ago(date)
+  days = ((Time.now - date) / 60 / 60 / 24).to_i
+  if days == 0
+    'today:'
+  elsif days == 1
+    'yesterday:'
+  else
+    "#{days} days ago:"
+  end.ljust(13)
+end
+
 def print_pull_requests(pull_requests)
   indent = 2
   pull_requests.each do |pr|
-    puts format("#{pr[:user][:login]}:  #{pr[:title]} on #{pr[:updated_at]}", indent)
-    puts format(pr[:url], pr[:user][:login].size + indent + 3)
+    days_ago = days_ago(pr[:updated_at])
+    puts format("#{days_ago} #{pr[:title]} ", indent)
+    puts format(pr[:url], days_ago.size + indent + 1)
+    puts format(pr[:user][:login], days_ago.size + indent + 1 )
   end
   puts ""
 end
@@ -30,7 +43,7 @@ rescue Octokit::NotFound
   []
 end
 
-puts "Checking your PRs"
+puts "Checking PRs in your repos"
 
 configuration.repos.each do |repo|
   pull_requests = get_pull_requests(client, repo)

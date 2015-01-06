@@ -1,6 +1,7 @@
 #This class manages the configuration in the .merrow.yml file
 require 'yaml'
 require 'octokit'
+require 'io/console'
 
 class Configuration
   FILENAME= '.merrow.yml'
@@ -14,7 +15,7 @@ class Configuration
   end
 
   def repos
-    data["repos"]
+    data["repos"] || []
   end
 
 
@@ -26,8 +27,8 @@ class Configuration
     puts "The username and password will not be stored anywhere"
     puts "What is your username for Github?"
     username = gets.chomp
-    puts "What is your password for Github?"
-    password = gets.chomp
+    puts "What is your password for Github? (your input is hidden)"
+    password = STDIN.noecho(&:gets).chomp
     token_name = "Token used by Merrow"
     client = Octokit::Client.new login: username, password: password
     auth = client.create_authorization(scopes: ["repo", "public_repo", "user"], note: token_name)
@@ -36,6 +37,14 @@ class Configuration
   rescue Octokit::Unauthorized => e
     puts "Authourization failed, user or password wrong?"
     exit(-1)
+  rescue Octokit::OneTimePasswordRequired => e
+    puts "Your account requires Two-factor authentication."
+    puts "Provide your two-factor token, you will need this only once (input hidden):"
+    token = STDIN.noecho(&:gets).chomp
+    auth = client.create_authorization(scopes: ["repo", "public_repo", "user"],
+      headers: { "X-GitHub-OTP" => token},
+      note: token_name)
+    auth[:token]
   end
 
   def save(data)
@@ -57,7 +66,7 @@ class Configuration
       puts "(format is user/repo like rails/rails or JordiPolo/merrow):"
       repo = gets.chomp
       if repo.match(/.*\/.*/)
-        File.open(config_file,'w+'){|file| file.write( {repo: [*repo]}.to_yaml)}
+        File.open(config_file,'w+'){|file| file.write( {repos: [*repo]}.to_yaml)}
         config_file
       else
         puts "Repo format not valid, run the tool again, you need to provide  username/reponame like JordiPolo/merrow"

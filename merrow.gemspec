@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["mumismo@gmail.com"]
   spec.summary       = %q{Small tool to look at all you pending PR in Github.}
   spec.description   = %q{Small tool to look at all you pending PR in Github }
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/JordiPolo/merrow"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

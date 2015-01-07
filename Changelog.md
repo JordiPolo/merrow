@@ -1,3 +1,6 @@
+# 0.0.4
+Support symbol or string
+
 # 0.0.3
 Hopefully support Two-factor
 Don't show password in the terminal

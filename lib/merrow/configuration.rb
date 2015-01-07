@@ -15,7 +15,7 @@ class Configuration
   end
 
   def repos
-    data["repos"] || []
+    data["repos"] || data[:repos] || []
   end
 
 

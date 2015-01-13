@@ -30,7 +30,7 @@ def print_pull_requests(pull_requests)
   pull_requests.each do |pr|
     days_ago = days_ago(pr[:updated_at])
     puts format("#{days_ago} #{pr[:title]} ", indent)
-    puts format(pr[:url], days_ago.size + indent + 1)
+    puts format(pr[:html_url], days_ago.size + indent + 1)
     puts format(pr[:user][:login], days_ago.size + indent + 1 )
   end
   puts ""

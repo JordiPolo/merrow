@@ -1,3 +1,6 @@
+# 0.0.5
+Print web URL instead of API URL in output
+
 # 0.0.4
 Support symbol or string
 

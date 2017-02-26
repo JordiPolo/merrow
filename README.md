@@ -8,21 +8,22 @@ Saves you time when you are working on/has to be aware of several projects at th
 
 Install it yourself as:
 
-    $ gem install merrow
-
+```
+$ gem install merrow
+```
 
 ## Configuration
 
 Merrow reads a list of repositories and an access tocken from the ~/.merrow.yml file.
 The file looks like this:
 
----
+```yml
 repos:
 - mdsol/kender
 - Railsmania/capistrano3-copy
 - rails/rails
 access_token: mylongaccesstokenwouldbewrittendowninhere
-
+```
 
 Add as many repos as you want, if you do not know how to make an access token, do not worry about that. Only add your repos, Merrow will generate one and write it down in the config file for you the first time it is executed
 
